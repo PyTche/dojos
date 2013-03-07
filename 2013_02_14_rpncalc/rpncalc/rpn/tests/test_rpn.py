@@ -8,8 +8,11 @@ class TestRPN(unittest.TestCase):
 		self.calc = RPNCalc()
 
 	def test_add_2(self):
-		self.assertEqual(self.calc.eval('2 2 +'), 2+2)
+		self.assertEqual(self.calc.eval('2 2 +'), 2+2) 
 		self.assertEqual(self.calc.eval('2 3 +'), 2+3)
+
+	def test_multiple_var(self):
+		self.assertEqual(self.calc.eval('5 3 8 + -'), -6)
 
 	def test_add_3(self):
 		self.assertEqual(self.calc.eval('2 3 + 2 +'), 2+3+2)

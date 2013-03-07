@@ -29,10 +29,3 @@ class RPNCalc(object):
 				self.stack.append(op(float(lhs), float(rhs)))
 
 		return self.stack.pop()
-
-
-
-
-
-
-
