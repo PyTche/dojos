@@ -51,27 +51,26 @@ class Automator(object):
     def __init__(self):
         self.valor = 0
 
-    def translate(self, valor):
-        result = ''
-        s_p = '0'
-        s_m = '0'
-        s_u = '0'
+    def parse(valor):
+        valor_string = str(valor)
+        
+        if len(valor) > 1:
+            s_p = valor[:1]
+            s_m = valor
+        
+        return valor
 
-        if len(str(valor)) > 2:
-            s_p = str(valor)[0]+'00'
-            c = str(valor)[1:]
-        else:
-            c = str(valor)
+    def translate(self, valor):
+        prase(valor)
+        result = ''
 
         if int(s_p) in Automator.VALORES_CENTENA:
             result += Automator.VALORES_CENTENA[int(s_p)]
             result += ' e '
 
-        if int(c) > 10 and int(c) < 20:
-            result += Automator.VALORES_11_19[int(str(valor)[1:])]
-        else:
-            s_m = str(valor)[-2:1]+'0'
-            s_u = str(valor)[1:]
+        if int(s_m) in Automator.VALORES_DEZENA:
+            result += Automator.VALORES_DEZENA[int(s_m)]
+            result += ' e '
 
         if int(s_m) in Automator.VALORES_DEZENA:
             result += Automator.VALORES_DEZENA[int(s_m)]
